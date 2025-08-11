@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { User } from "lucide-react";
 
 const NavItem = ({ to, children }: { to: string; children: React.ReactNode }) => (
   <NavLink
@@ -34,14 +35,9 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:block">
-          <Button asChild>
-            <a
-              href="https://wa.me/5599999999999?text=Quero%20agendar%20um%20hor%C3%A1rio!"
-              aria-label="Agendar pelo WhatsApp"
-            >
-              Agendar no WhatsApp
-            </a>
-          </Button>
+          <Link to="/usuario" aria-label="Minha conta" className="p-2 rounded-md border hover:bg-primary/10">
+            <User className="w-5 h-5" />
+          </Link>
         </div>
 
         <button
@@ -61,6 +57,7 @@ const Navbar = () => {
             <NavItem to="/produtos">Produtos</NavItem>
             <NavItem to="/novidades">Novidades</NavItem>
             <NavItem to="/sobre">Cultura</NavItem>
+            <NavItem to="/usuario">Minha conta</NavItem>
             <Button asChild className="mt-2">
               <a href="/agendar">Agendar agora</a>
             </Button>

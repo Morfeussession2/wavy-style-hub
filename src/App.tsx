@@ -11,6 +11,7 @@ import Novidades from "./pages/Novidades";
 import Sobre from "./pages/Sobre";
 import Navbar from "@/components/site/Navbar";
 import Footer from "@/components/site/Footer";
+import Usuario from "./pages/Usuario";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/produtos" element={<Produtos />} />
           <Route path="/novidades" element={<Novidades />} />
           <Route path="/sobre" element={<Sobre />} />
+          <Route path="/usuario" element={<Usuario />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
