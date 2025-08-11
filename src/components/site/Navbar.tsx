@@ -35,10 +35,14 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:block">
-          <Link to="/usuario" aria-label="Minha conta" className="p-2 rounded-md border hover:bg-primary/10">
-            <User className="w-5 h-5" />
-          </Link>
-        </div>
+        <Link
+          to="/usuario"
+          aria-label="Minha conta"
+          className="p-2 rounded-full border hover:bg-primary/10 flex items-center justify-center"
+        >
+          <User className="w-5 h-5" />
+        </Link>
+      </div>
 
         <button
           className="md:hidden p-2 rounded-md border hover:bg-primary/10"
