@@ -46,7 +46,7 @@ const Index = () => {
                   <li>• Produtos selecionados para cachos</li>
                   <li>• Conteúdo educativo e atual</li>
                 </ul>
-                <Button asChild className="mt-6" variant="glass"><Link to="/sobre">Ler mais</Link></Button>
+                <Button asChild className="mt-6" variant="outline"><Link to="/sobre">Ler mais</Link></Button>
               </CardContent>
             </Card>
           </div>

@@ -152,7 +152,7 @@ const Agendar = () => {
               <p className="text-sm text-foreground/70 mb-4">
                 Prefere explicar seu cabelo, rotina e objetivo? Fale com a gente e montamos juntos a melhor opção.
               </p>
-              <Button asChild variant="glass">
+              <Button asChild variant="secondary">
                 <a href={`https://wa.me/${PHONE}?text=${encodeURIComponent("Olá! Quero um agendamento personalizado.")}`} target="_blank" rel="noreferrer">
                   Conversar no WhatsApp
                 </a>
