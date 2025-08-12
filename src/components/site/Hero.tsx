@@ -25,7 +25,15 @@ const Hero = () => {
         </svg>
       </div>
 
-      <div className="relative container mx-auto py-24 md:py-32">
+      <div 
+        className="relative container mx-auto py-24 md:py-32 animate-fade-in"
+        style={{
+          backgroundImage: 'url(/lovable-uploads/150855a4-a02e-4b6a-87a8-44e2144deca2.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
           Cachos com atitude, ondas com leveza
         </h1>
@@ -33,10 +41,10 @@ const Hero = () => {
           Agende seu horário online, personalize pelo WhatsApp e descubra produtos e conteúdos feitos para quem ama cabelos cacheados.
         </p>
         <div className="flex flex-col sm:flex-row gap-3">
-          <Button asChild>
+          <Button asChild variant="outline">
             <a href="/agendar" className="hover-scale">Agendar agora</a>
           </Button>
-          <Button variant="secondary" asChild>
+          <Button variant="outline" asChild>
             <a
               href="https://wa.me/5599999999999?text=Ol%C3%A1!%20Quero%20um%20agendamento%20personalizado."
               className="hover-scale"
