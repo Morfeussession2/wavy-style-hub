@@ -11,6 +11,7 @@ import Agendar from "./pages/Agendar";
 import Produtos from "./pages/Produtos";
 import Novidades from "./pages/Novidades";
 import Sobre from "./pages/Sobre";
+import OndeEstamos from "./pages/OndeEstamos";
 import Navbar from "@/components/site/Navbar";
 import Footer from "@/components/site/Footer";
 import Usuario from "./pages/Usuario";
@@ -52,6 +53,7 @@ function App() {
                 <Route path="/produtos" element={<Produtos />} />
                 <Route path="/novidades" element={<Novidades />} />
                 <Route path="/sobre" element={<Sobre />} />
+                <Route path="/onde-estamos" element={<OndeEstamos />} />
                 <Route path="/usuario" element={<Usuario />} />
                 {/* Rotas customizadas acima */}
                 <Route path="*" element={<NotFound />} />
