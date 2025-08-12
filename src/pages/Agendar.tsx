@@ -29,12 +29,14 @@ const Agendar = () => {
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [slot, setSlot] = useState<string | undefined>();
   const [service, setService] = useState<string>(services[0].id);
-  const [professional, setProfessional] = useState<string>("");
+  const [professional, setProfessional] = useState<string>("none");
 
   const openWhatsApp = () => {
     if (!date || !slot) return;
     const s = services.find((x) => x.id === service)?.label;
-    const p = professional ? professionals.find((x) => x.id === professional)?.name : "Sem preferência";
+    const p = professional && professional !== "none" 
+      ? professionals.find((x) => x.id === professional)?.name 
+      : "Sem preferência";
     const d = date.toLocaleDateString("pt-BR");
     const message = `Olá! Quero agendar: ${s} em ${d} às ${slot}. Profissional: ${p}.`;
     const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
@@ -79,7 +81,7 @@ const Agendar = () => {
                       <SelectValue placeholder="Selecione um profissional" />
                     </SelectTrigger>
                     <SelectContent className="bg-card border">
-                      <SelectItem value="">Sem preferência</SelectItem>
+                      <SelectItem value="none">Sem preferência</SelectItem>
                       {professionals.map((prof) => (
                         <SelectItem key={prof.id} value={prof.id}>
                           <div>
