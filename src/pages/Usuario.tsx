@@ -190,28 +190,26 @@ const Usuario = () => {
 
               <Separator />
 
-              <div className="grid gap-6 md:grid-cols-2">
+              <div className="grid gap-6 lg:grid-cols-2">
                 <div>
                   <Label>Como conheceu?</Label>
-                  <div className="mt-2 grid grid-cols-2 gap-2">
+                  <div className="mt-3 grid grid-cols-2 gap-2">
                     {[
                       { id: "instagram", label: "Instagram" },
                       { id: "google", label: "Google" },
                       { id: "indicacao", label: "Indicação" },
                       { id: "outro", label: "Outro" },
                     ].map((opt) => (
-                      <label key={opt.id} className="flex items-center gap-2 text-sm">
-                        <RadioGroup className="hidden" defaultValue={form.getValues("comoConheceu") || undefined}>
-                          <RadioGroupItem value={opt.id} id={`como-${opt.id}`} />
-                        </RadioGroup>
+                      <label key={opt.id} className="cursor-pointer">
                         <input
                           type="radio"
-                          id={`como-${opt.id}`}
-                          className="sr-only"
+                          className="sr-only peer"
                           value={opt.id}
                           {...form.register("comoConheceu")}
                         />
-                        <span className="px-3 py-1.5 rounded border text-foreground/90">{opt.label}</span>
+                        <div className="px-3 py-2 rounded-md border glass-subtle text-sm text-center transition-all peer-checked:bg-primary peer-checked:text-primary-foreground peer-checked:border-primary hover:bg-accent/50">
+                          {opt.label}
+                        </div>
                       </label>
                     ))}
                   </div>
@@ -219,67 +217,77 @@ const Usuario = () => {
 
                 <div>
                   <Label>Tipo de cacho</Label>
-                  <div className="mt-2 grid grid-cols-3 gap-2 text-sm">
+                  <div className="mt-3 grid grid-cols-3 gap-2">
                     {["2A","2B","2C","3A","3B","3C","4A","4B","4C"].map((t) => (
-                      <label key={t} className="flex items-center gap-2">
-                        <input type="radio" className="sr-only" value={t} {...form.register("cabeloTipo")} />
-                        <span className="px-3 py-1.5 rounded border">{t}</span>
+                      <label key={t} className="cursor-pointer">
+                        <input type="radio" className="sr-only peer" value={t} {...form.register("cabeloTipo")} />
+                        <div className="px-3 py-2 rounded-md border glass-subtle text-sm text-center transition-all peer-checked:bg-primary peer-checked:text-primary-foreground peer-checked:border-primary hover:bg-accent/50">
+                          {t}
+                        </div>
                       </label>
                     ))}
                   </div>
                 </div>
 
-                <div>
+                <div className="lg:col-span-2">
                   <Label>Couro cabeludo</Label>
-                  <div className="mt-2 grid grid-cols-4 gap-2 text-sm">
+                  <div className="mt-3 grid grid-cols-2 md:grid-cols-4 gap-2">
                     {[{id:"normal",l:"Normal"},{id:"seco",l:"Seco"},{id:"oleoso",l:"Oleoso"},{id:"misto",l:"Misto"}].map(o => (
-                      <label key={o.id} className="flex items-center gap-2">
-                        <input type="radio" className="sr-only" value={o.id} {...form.register("couro")} />
-                        <span className="px-3 py-1.5 rounded border">{o.l}</span>
+                      <label key={o.id} className="cursor-pointer">
+                        <input type="radio" className="sr-only peer" value={o.id} {...form.register("couro")} />
+                        <div className="px-3 py-2 rounded-md border glass-subtle text-sm text-center transition-all peer-checked:bg-primary peer-checked:text-primary-foreground peer-checked:border-primary hover:bg-accent/50">
+                          {o.l}
+                        </div>
                       </label>
                     ))}
                   </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-4">
+                <div className="lg:col-span-2 grid gap-6 md:grid-cols-3">
                   <div>
                     <Label>Porosidade</Label>
-                    <div className="mt-2 grid grid-cols-3 gap-2 text-sm">
+                    <div className="mt-3 grid grid-cols-1 gap-2">
                       {[{id:"baixa",l:"Baixa"},{id:"media",l:"Média"},{id:"alta",l:"Alta"}].map(o => (
-                        <label key={o.id} className="flex items-center gap-2">
-                          <input type="radio" className="sr-only" value={o.id} {...form.register("porosidade")} />
-                          <span className="px-3 py-1.5 rounded border">{o.l}</span>
+                        <label key={o.id} className="cursor-pointer">
+                          <input type="radio" className="sr-only peer" value={o.id} {...form.register("porosidade")} />
+                          <div className="px-3 py-2 rounded-md border glass-subtle text-sm text-center transition-all peer-checked:bg-primary peer-checked:text-primary-foreground peer-checked:border-primary hover:bg-accent/50">
+                            {o.l}
+                          </div>
                         </label>
                       ))}
                     </div>
                   </div>
                   <div>
                     <Label>Elasticidade</Label>
-                    <div className="mt-2 grid grid-cols-3 gap-2 text-sm">
+                    <div className="mt-3 grid grid-cols-1 gap-2">
                       {[{id:"baixa",l:"Baixa"},{id:"media",l:"Média"},{id:"alta",l:"Alta"}].map(o => (
-                        <label key={o.id} className="flex items-center gap-2">
-                          <input type="radio" className="sr-only" value={o.id} {...form.register("elasticidade")} />
-                          <span className="px-3 py-1.5 rounded border">{o.l}</span>
+                        <label key={o.id} className="cursor-pointer">
+                          <input type="radio" className="sr-only peer" value={o.id} {...form.register("elasticidade")} />
+                          <div className="px-3 py-2 rounded-md border glass-subtle text-sm text-center transition-all peer-checked:bg-primary peer-checked:text-primary-foreground peer-checked:border-primary hover:bg-accent/50">
+                            {o.l}
+                          </div>
                         </label>
                       ))}
                     </div>
                   </div>
                   <div>
                     <Label>Densidade</Label>
-                    <div className="mt-2 grid grid-cols-3 gap-2 text-sm">
+                    <div className="mt-3 grid grid-cols-1 gap-2">
                       {[{id:"baixa",l:"Baixa"},{id:"media",l:"Média"},{id:"alta",l:"Alta"}].map(o => (
-                        <label key={o.id} className="flex items-center gap-2">
-                          <input type="radio" className="sr-only" value={o.id} {...form.register("densidade")} />
-                          <span className="px-3 py-1.5 rounded border">{o.l}</span>
+                        <label key={o.id} className="cursor-pointer">
+                          <input type="radio" className="sr-only peer" value={o.id} {...form.register("densidade")} />
+                          <div className="px-3 py-2 rounded-md border glass-subtle text-sm text-center transition-all peer-checked:bg-primary peer-checked:text-primary-foreground peer-checked:border-primary hover:bg-accent/50">
+                            {o.l}
+                          </div>
                         </label>
                       ))}
                     </div>
                   </div>
                 </div>
 
-                <div className="md:col-span-2">
+                <div className="lg:col-span-2">
                   <Label>Procedimentos químicos (últimos 3 meses)</Label>
-                  <div className="mt-2 grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
+                  <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                     {[
                       {id:"nenhum", l:"Nenhum"},
                       {id:"alisamento", l:"Alisamento"},
@@ -289,7 +297,7 @@ const Usuario = () => {
                       {id:"mechas", l:"Mechas"},
                       {id:"outros", l:"Outros"},
                     ].map(o => (
-                      <label key={o.id} className="flex items-center gap-2">
+                      <label key={o.id} className="flex items-center gap-3 p-3 rounded-md border glass-subtle cursor-pointer hover:bg-accent/30 transition-colors">
                         <Checkbox
                           checked={form.watch("quimica")?.includes(o.id as any) || false}
                           onCheckedChange={(checked) => {
@@ -298,34 +306,37 @@ const Usuario = () => {
                             form.setValue("quimica", Array.from(arr));
                           }}
                         />
-                        <span>{o.l}</span>
+                        <span className="text-sm">{o.l}</span>
                       </label>
                     ))}
                   </div>
                 </div>
 
-                <div>
-                  <Label className="flex items-center gap-2">
-                    <Checkbox
-                      checked={form.watch("alergia") || false}
-                      onCheckedChange={(v) => form.setValue("alergia", Boolean(v))}
-                    /> Possui alguma alergia?
-                  </Label>
-                  {form.watch("alergia") && (
-                    <Input className="mt-2" placeholder="Descreva" {...form.register("alergiaDescricao")} />
-                  )}
+                <div className="lg:col-span-2">
+                  <div className="p-4 rounded-md border glass-subtle">
+                    <Label className="flex items-center gap-3 cursor-pointer">
+                      <Checkbox
+                        checked={form.watch("alergia") || false}
+                        onCheckedChange={(v) => form.setValue("alergia", Boolean(v))}
+                      /> 
+                      <span>Possui alguma alergia?</span>
+                    </Label>
+                    {form.watch("alergia") && (
+                      <Input className="mt-3" placeholder="Descreva suas alergias..." {...form.register("alergiaDescricao")} />
+                    )}
+                  </div>
                 </div>
 
-                <div className="md:col-span-2">
+                <div className="lg:col-span-2">
                   <Label>Quais produtos costuma usar em casa?</Label>
-                  <div className="mt-2 grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
+                  <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {[
                       {id:"basico", l:"Shampoo e condicionador"},
                       {id:"mascara", l:"Máscara"},
                       {id:"creme", l:"Creme de pentear"},
                       {id:"finalizadores", l:"Gelatina e mousse"},
                     ].map(o => (
-                      <label key={o.id} className="flex items-center gap-2">
+                      <label key={o.id} className="flex items-center gap-3 p-3 rounded-md border glass-subtle cursor-pointer hover:bg-accent/30 transition-colors">
                         <Checkbox
                           checked={form.watch("produtosCasa")?.includes(o.id as any) || false}
                           onCheckedChange={(checked) => {
@@ -334,25 +345,30 @@ const Usuario = () => {
                             form.setValue("produtosCasa", Array.from(arr));
                           }}
                         />
-                        <span>{o.l}</span>
+                        <span className="text-sm">{o.l}</span>
                       </label>
                     ))}
                   </div>
                 </div>
 
-                <div className="md:col-span-2">
-                  <Label>Principais queixas</Label>
-                  <Textarea placeholder="Conte-nos suas principais queixas para personalizarmos seu atendimento." {...form.register("queixas")} />
+                <div className="lg:col-span-2">
+                  <Label htmlFor="queixas">Principais queixas</Label>
+                  <Textarea 
+                    id="queixas"
+                    className="mt-3 min-h-24"
+                    placeholder="Conte-nos suas principais queixas para personalizarmos seu atendimento..." 
+                    {...form.register("queixas")} 
+                  />
                 </div>
               </div>
 
-              <div className="flex items-center gap-3">
-                <Button type="submit">Salvar ficha</Button>
-                <Button type="button" variant="secondary" onClick={() => {
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-4">
+                <Button type="submit" size="lg" className="flex-1 sm:flex-initial">Salvar ficha</Button>
+                <Button type="button" variant="secondary" size="lg" className="flex-1 sm:flex-initial" onClick={() => {
                   localStorage.removeItem("gg_form");
                   form.reset();
                   toast({ title: "Ficha limpa", description: "Você pode preencher novamente.", duration: 2500 });
-                }}>Limpar</Button>
+                }}>Limpar dados</Button>
               </div>
             </form>
           </CardContent>
