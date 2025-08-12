@@ -132,7 +132,11 @@ All colors MUST be HSL.
     @apply bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 border border-white/20;
   }
   .glass-card { 
-    @apply bg-card/80 backdrop-blur-md supports-[backdrop-filter]:bg-card/60 border border-white/20 shadow-lg;
+    background: url('/lovable-uploads/c25f3ae9-84e5-4046-8d15-a1d2ffcbf60f.png'), hsl(var(--card)/0.8);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: soft-light;
+    @apply backdrop-blur-md supports-[backdrop-filter]:bg-card/60 border border-white/20 shadow-lg;
   }
   .glass-strong { 
     @apply bg-background/90 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70 border border-white/30;
