@@ -2,6 +2,8 @@ import { Link, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { User } from "lucide-react";
+import LogoGabeleira from "@/assets/products/LogoGabeleira.png";
+import GabeleiraTipo from "@/assets/products/GabeleiraTipo.png";
 
 const NavItem = ({ to, children }: { to: string; children: React.ReactNode }) => (
   <NavLink
@@ -22,9 +24,8 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
       <nav className="container mx-auto flex items-center justify-between h-16">
-        <Link to="/" className="flex items-center gap-2 font-bold text-lg">
-          <span className="text-primary">GAB</span>
-          <span className="text-accent">GOMES</span>
+        <Link to="/" className="flex items-center gap-2">
+          <img src={GabeleiraTipo} alt="Tipo Gabeleira" className="h-12 w-auto" />
         </Link>
 
         <div className="hidden md:flex items-center gap-1">
