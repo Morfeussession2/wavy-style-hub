@@ -99,7 +99,26 @@ All colors MUST be HSL.
 
 @layer base {
   * { @apply border-border; }
-  body { @apply bg-background text-foreground font-sans; }
+  body { 
+    @apply bg-background text-foreground font-sans; 
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 600"><defs><linearGradient id="wave1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="%234a90e2" stop-opacity="0.08"/><stop offset="50%" stop-color="%235ba3f5" stop-opacity="0.12"/><stop offset="100%" stop-color="%236bb6ff" stop-opacity="0.08"/></linearGradient><linearGradient id="wave2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="%2372a8f7" stop-opacity="0.06"/><stop offset="50%" stop-color="%238cc5ff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23a0d3ff" stop-opacity="0.06"/></linearGradient></defs><path d="M0,350 Q600,250 1200,350 T2400,350 L2400,600 L0,600 Z" fill="url(%23wave1)" opacity="0.7"><animateTransform attributeName="transform" type="translate" values="-1200,0;0,0;-1200,0" dur="25s" repeatCount="indefinite"/></path><path d="M0,400 Q800,300 1600,400 T3200,400 L3200,600 L0,600 Z" fill="url(%23wave2)" opacity="0.5"><animateTransform attributeName="transform" type="translate" values="0,0;1600,0;0,0" dur="30s" repeatCount="indefinite"/></path><path d="M0,450 Q400,350 800,450 T1600,450 L1600,600 L0,600 Z" fill="url(%23wave1)" opacity="0.4"><animateTransform attributeName="transform" type="translate" values="-800,0;0,0;-800,0" dur="20s" repeatCount="indefinite"/></path></svg>') no-repeat center bottom;
+    background-size: cover;
+    animation: wave-float 40s ease-in-out infinite;
+    z-index: -1;
+    pointer-events: none;
+  }
 }
 
 @layer utilities {
@@ -107,4 +126,19 @@ All colors MUST be HSL.
   .hover-scale { @apply transition-transform duration-200 hover:scale-105; }
   .pulse { @apply animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite]; }
   .bg-hero { background: var(--gradient-hero); }
+  
+  @keyframes wave-float {
+    0%, 100% { 
+      transform: translateY(0) scale(1);
+    }
+    25% { 
+      transform: translateY(-15px) scale(1.02);
+    }
+    50% { 
+      transform: translateY(10px) scale(0.98);
+    }
+    75% { 
+      transform: translateY(-8px) scale(1.01);
+    }
+  }
 }
