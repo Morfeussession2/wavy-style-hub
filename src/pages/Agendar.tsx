@@ -18,16 +18,27 @@ const services = [
   { id: "tratamento", label: "Tratamento Antifrizz" },
 ];
 
+const professionals = [
+  { id: "gab", name: "Gab Gomes", specialty: "Especialista em coloração e cortes" },
+  { id: "ana", name: "Ana Silva", specialty: "Expert em tratamentos capilares" },
+  { id: "carlos", name: "Carlos Santos", specialty: "Mestre em cortes masculinos" },
+  { id: "mariana", name: "Mariana Costa", specialty: "Specialist em cabelos cacheados" },
+];
+
 const Agendar = () => {
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [slot, setSlot] = useState<string | undefined>();
   const [service, setService] = useState<string>(services[0].id);
+  const [professional, setProfessional] = useState<string>("none");
 
   const openWhatsApp = () => {
     if (!date || !slot) return;
     const s = services.find((x) => x.id === service)?.label;
+    const p = professional && professional !== "none" 
+      ? professionals.find((x) => x.id === professional)?.name 
+      : "Sem preferência";
     const d = date.toLocaleDateString("pt-BR");
-    const message = `Olá! Quero agendar: ${s} em ${d} às ${slot}.`;
+    const message = `Olá! Quero agendar: ${s} em ${d} às ${slot}. Profissional: ${p}.`;
     const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
@@ -62,6 +73,27 @@ const Agendar = () => {
                     </SelectContent>
                   </Select>
                 </div>
+                
+                <div>
+                  <label className="block text-sm mb-2">Profissional (opcional)</label>
+                  <Select value={professional} onValueChange={setProfessional}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Selecione um profissional" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-card border">
+                      <SelectItem value="none">Sem preferência</SelectItem>
+                      {professionals.map((prof) => (
+                        <SelectItem key={prof.id} value={prof.id}>
+                          <div>
+                            <div className="font-medium">{prof.name}</div>
+                            <div className="text-xs text-muted-foreground">{prof.specialty}</div>
+                          </div>
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
                 <div>
                   <label className="block text-sm mb-2">Horário</label>
                   <div className="grid grid-cols-3 gap-2">

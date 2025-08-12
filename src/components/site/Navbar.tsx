@@ -33,6 +33,7 @@ const Navbar = () => {
           <NavItem to="/produtos">Produtos</NavItem>
           <NavItem to="/novidades">Novidades</NavItem>
           <NavItem to="/sobre">Cultura</NavItem>
+          <NavItem to="/onde-estamos">Onde Estamos</NavItem>
         </div>
 
         <div className="hidden md:block">
@@ -62,6 +63,7 @@ const Navbar = () => {
             <NavItem to="/produtos">Produtos</NavItem>
             <NavItem to="/novidades">Novidades</NavItem>
             <NavItem to="/sobre">Cultura</NavItem>
+            <NavItem to="/onde-estamos">Onde Estamos</NavItem>
             <NavItem to="/usuario">Minha conta</NavItem>
             <Button asChild className="mt-2">
               <a href="/agendar">Agendar agora</a>
