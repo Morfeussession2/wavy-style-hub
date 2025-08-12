@@ -1,6 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
 import { Instagram } from "lucide-react";
 
 const posts = [
@@ -9,47 +7,38 @@ const posts = [
   { id: 3, title: "Corte para valorizar o volume", excerpt: "Entenda o caimento e o desenho do corte em camadas.", tag: "Corte" },
 ];
 
-interface InstagramPost {
-  id: string;
-  caption: string;
-  media_url: string;
-  thumbnail_url: string;
-  permalink: string;
-  timestamp: string;
-  media_type: string;
-}
-
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL || '',
-  import.meta.env.VITE_SUPABASE_ANON_KEY || ''
-);
+// Dados mockados do Instagram
+const mockInstagramPosts = [
+  {
+    id: "1",
+    caption: "✨ Transformação incrível! Cachos definidos e hidratados com nossos produtos especiais. #cacheadas #cabelos #transformacao",
+    media_url: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=400&fit=crop",
+    thumbnail_url: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=400&fit=crop",
+    permalink: "https://www.instagram.com/p/example1/",
+    timestamp: "2024-01-15T10:30:00Z",
+    media_type: "IMAGE"
+  },
+  {
+    id: "2", 
+    caption: "📍 Nosso salão te espera! Ambiente acolhedor e profissionais especializados em cabelos cacheados e crespos 💫",
+    media_url: "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=400&fit=crop",
+    thumbnail_url: "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=400&fit=crop", 
+    permalink: "https://www.instagram.com/p/example2/",
+    timestamp: "2024-01-14T15:45:00Z",
+    media_type: "IMAGE"
+  },
+  {
+    id: "3",
+    caption: "💡 Dica do dia: A finalização faz toda a diferença! Use nossos produtos para manter seus cachos perfeitos por mais tempo ✨",
+    media_url: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=400&fit=crop",
+    thumbnail_url: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=400&fit=crop",
+    permalink: "https://www.instagram.com/p/example3/", 
+    timestamp: "2024-01-13T12:20:00Z",
+    media_type: "IMAGE"
+  }
+];
 
 const Novidades = () => {
-  const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchInstagramPosts = async () => {
-      try {
-        const { data, error } = await supabase.functions.invoke('instagram-posts');
-        
-        if (error) {
-          console.error('Error fetching Instagram posts:', error);
-          return;
-        }
-
-        if (data?.posts) {
-          setInstagramPosts(data.posts);
-        }
-      } catch (error) {
-        console.error('Error fetching Instagram posts:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchInstagramPosts();
-  }, []);
   return (
     <main className="container mx-auto py-12">
       <h1 className="text-3xl font-bold mb-8">Novidades & Dicas</h1>
@@ -69,53 +58,35 @@ const Novidades = () => {
           </a>
         </div>
         
-        {loading ? (
-          <div className="grid gap-4 md:grid-cols-3">
-            {[1, 2, 3].map((i) => (
-              <Card key={i} className="animate-pulse">
-                <div className="h-64 bg-muted rounded-t-lg" />
+        <div className="grid gap-4 md:grid-cols-3">
+          {mockInstagramPosts.map((post) => (
+            <Card key={post.id} className="overflow-hidden hover-scale">
+              <a 
+                href={post.permalink} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <div className="aspect-square overflow-hidden">
+                  <img 
+                    src={post.thumbnail_url} 
+                    alt={post.caption?.slice(0, 100) || "Instagram post"}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
                 <CardContent className="p-4">
-                  <div className="h-4 bg-muted rounded mb-2" />
-                  <div className="h-3 bg-muted rounded w-3/4" />
+                  <p className="text-sm text-foreground/80 line-clamp-3">
+                    {post.caption?.slice(0, 120)}
+                    {post.caption && post.caption.length > 120 && '...'}
+                  </p>
+                  <time className="text-xs text-muted-foreground mt-2 block">
+                    {new Date(post.timestamp).toLocaleDateString('pt-BR')}
+                  </time>
                 </CardContent>
-              </Card>
-            ))}
-          </div>
-        ) : instagramPosts.length > 0 ? (
-          <div className="grid gap-4 md:grid-cols-3">
-            {instagramPosts.map((post) => (
-              <Card key={post.id} className="overflow-hidden hover-scale">
-                <a 
-                  href={post.permalink} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="block"
-                >
-                  <div className="aspect-square overflow-hidden">
-                    <img 
-                      src={post.thumbnail_url} 
-                      alt={post.caption?.slice(0, 100) || "Instagram post"}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <CardContent className="p-4">
-                    <p className="text-sm text-foreground/80 line-clamp-3">
-                      {post.caption?.slice(0, 120)}
-                      {post.caption && post.caption.length > 120 && '...'}
-                    </p>
-                    <time className="text-xs text-muted-foreground mt-2 block">
-                      {new Date(post.timestamp).toLocaleDateString('pt-BR')}
-                    </time>
-                  </CardContent>
-                </a>
-              </Card>
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-8 text-muted-foreground">
-            <p>Posts do Instagram serão carregados em breve.</p>
-          </div>
-        )}
+              </a>
+            </Card>
+          ))}
+        </div>
       </section>
 
       {/* Blog Posts Section */}
