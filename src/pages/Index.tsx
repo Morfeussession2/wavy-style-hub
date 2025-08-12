@@ -39,14 +39,14 @@ const Index = () => {
                 Celebramos texturas naturais com atendimento acolhedor, técnica apurada e muito aprendizado sobre cachos. Educação, autoestima e cuidado andam juntos por aqui.
               </p>
             </div>
-            <Card className="hover-scale">
+            <Card className="hover-scale glass-card border-white/20">
               <CardContent className="p-6">
                 <ul className="space-y-3 text-sm text-foreground/80">
                   <li>• Atendimento humanizado e consultivo</li>
                   <li>• Produtos selecionados para cachos</li>
                   <li>• Conteúdo educativo e atual</li>
                 </ul>
-                <Button asChild className="mt-6"><Link to="/sobre">Ler mais</Link></Button>
+                <Button asChild className="mt-6" variant="outline"><Link to="/sobre">Ler mais</Link></Button>
               </CardContent>
             </Card>
           </div>

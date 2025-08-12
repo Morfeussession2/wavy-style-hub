@@ -127,6 +127,24 @@ All colors MUST be HSL.
   .pulse { @apply animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite]; }
   .bg-hero { background: var(--gradient-hero); }
   
+  /* Glassmorphism Effects */
+  .glass { 
+    @apply bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 border border-white/20;
+  }
+  .glass-card { 
+    background: url('/lovable-uploads/c25f3ae9-84e5-4046-8d15-a1d2ffcbf60f.png'), hsl(var(--card)/0.8);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: soft-light;
+    @apply backdrop-blur-md supports-[backdrop-filter]:bg-card/60 border border-white/20 shadow-lg;
+  }
+  .glass-strong { 
+    @apply bg-background/90 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70 border border-white/30;
+  }
+  .glass-subtle { 
+    @apply bg-background/40 backdrop-blur-sm supports-[backdrop-filter]:bg-background/30 border border-white/10;
+  }
+  
   @keyframes hair-flow {
     0%, 100% { 
       transform: translateY(0) scale(1) rotate(0deg);
