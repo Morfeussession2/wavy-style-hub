@@ -33,10 +33,10 @@ const Hero = () => {
           Agende seu horário online, personalize pelo WhatsApp e descubra produtos e conteúdos feitos para quem ama cabelos cacheados.
         </p>
         <div className="flex flex-col sm:flex-row gap-3">
-          <Button asChild>
+          <Button asChild variant="glass">
             <a href="/agendar" className="hover-scale">Agendar agora</a>
           </Button>
-          <Button variant="secondary" asChild>
+          <Button variant="outline" asChild>
             <a
               href="https://wa.me/5599999999999?text=Ol%C3%A1!%20Quero%20um%20agendamento%20personalizado."
               className="hover-scale"

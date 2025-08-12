@@ -144,7 +144,7 @@ const Agendar = () => {
         </div>
 
         <section className="mt-12">
-          <Card>
+          <Card className="glass-card border-white/20">
             <CardHeader>
               <CardTitle>Agendamento personalizado pelo WhatsApp</CardTitle>
             </CardHeader>
@@ -152,7 +152,7 @@ const Agendar = () => {
               <p className="text-sm text-foreground/70 mb-4">
                 Prefere explicar seu cabelo, rotina e objetivo? Fale com a gente e montamos juntos a melhor opção.
               </p>
-              <Button asChild variant="secondary">
+              <Button asChild variant="glass">
                 <a href={`https://wa.me/${PHONE}?text=${encodeURIComponent("Olá! Quero um agendamento personalizado.")}`} target="_blank" rel="noreferrer">
                   Conversar no WhatsApp
                 </a>
