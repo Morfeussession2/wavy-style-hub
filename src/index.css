@@ -113,9 +113,9 @@ All colors MUST be HSL.
     left: 0;
     width: 200%;
     height: 100%;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 600"><defs><linearGradient id="wave1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="%234a90e2" stop-opacity="0.08"/><stop offset="50%" stop-color="%235ba3f5" stop-opacity="0.12"/><stop offset="100%" stop-color="%236bb6ff" stop-opacity="0.08"/></linearGradient><linearGradient id="wave2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="%2372a8f7" stop-opacity="0.06"/><stop offset="50%" stop-color="%238cc5ff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23a0d3ff" stop-opacity="0.06"/></linearGradient></defs><path d="M0,350 Q600,250 1200,350 T2400,350 L2400,600 L0,600 Z" fill="url(%23wave1)" opacity="0.7"><animateTransform attributeName="transform" type="translate" values="-1200,0;0,0;-1200,0" dur="25s" repeatCount="indefinite"/></path><path d="M0,400 Q800,300 1600,400 T3200,400 L3200,600 L0,600 Z" fill="url(%23wave2)" opacity="0.5"><animateTransform attributeName="transform" type="translate" values="0,0;1600,0;0,0" dur="30s" repeatCount="indefinite"/></path><path d="M0,450 Q400,350 800,450 T1600,450 L1600,600 L0,600 Z" fill="url(%23wave1)" opacity="0.4"><animateTransform attributeName="transform" type="translate" values="-800,0;0,0;-800,0" dur="20s" repeatCount="indefinite"/></path></svg>') no-repeat center bottom;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 800"><defs><linearGradient id="hair1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="%234a90e2" stop-opacity="0.1"/><stop offset="50%" stop-color="%235ba3f5" stop-opacity="0.15"/><stop offset="100%" stop-color="%236bb6ff" stop-opacity="0.1"/></linearGradient><linearGradient id="hair2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="%2372a8f7" stop-opacity="0.08"/><stop offset="50%" stop-color="%238cc5ff" stop-opacity="0.12"/><stop offset="100%" stop-color="%23a0d3ff" stop-opacity="0.08"/></linearGradient><linearGradient id="hair3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="%236bb6ff" stop-opacity="0.06"/><stop offset="50%" stop-color="%2387ceeb" stop-opacity="0.1"/><stop offset="100%" stop-color="%23add8e6" stop-opacity="0.06"/></linearGradient></defs><path d="M-500,200 Q200,100 900,250 Q1400,380 2000,200 Q2600,50 3500,300" fill="none" stroke="url(%23hair1)" stroke-width="8" opacity="0.6"><animateTransform attributeName="transform" type="translate" values="-1500,0;0,0;-1500,0" dur="35s" repeatCount="indefinite"/></path><path d="M-300,300 Q400,150 1100,320 Q1600,450 2200,280 Q2800,120 3800,380" fill="none" stroke="url(%23hair2)" stroke-width="5" opacity="0.5"><animateTransform attributeName="transform" type="translate" values="0,0;1800,0;0,0" dur="40s" repeatCount="indefinite"/></path><path d="M-700,400 Q100,250 800,420 Q1300,550 1900,380 Q2500,220 4000,500" fill="none" stroke="url(%23hair1)" stroke-width="12" opacity="0.4"><animateTransform attributeName="transform" type="translate" values="-2000,0;0,0;-2000,0" dur="28s" repeatCount="indefinite"/></path><path d="M-400,500 Q300,350 1000,520 Q1500,650 2100,480 Q2700,320 3900,600" fill="none" stroke="url(%23hair3)" stroke-width="3" opacity="0.7"><animateTransform attributeName="transform" type="translate" values="0,0;1600,0;0,0" dur="45s" repeatCount="indefinite"/></path><path d="M-600,350 Q150,200 850,370 Q1350,500 1950,330 Q2550,170 3700,450" fill="none" stroke="url(%23hair2)" stroke-width="7" opacity="0.5"><animateTransform attributeName="transform" type="translate" values="-1800,0;0,0;-1800,0" dur="32s" repeatCount="indefinite"/></path><path d="M-200,450 Q500,300 1200,470 Q1700,600 2300,430 Q2900,270 4200,550" fill="none" stroke="url(%23hair1)" stroke-width="4" opacity="0.6"><animateTransform attributeName="transform" type="translate" values="0,0;2000,0;0,0" dur="38s" repeatCount="indefinite"/></path><path d="M-800,250 Q50,100 750,270 Q1250,400 1850,250 Q2450,90 3600,350" fill="none" stroke="url(%23hair3)" stroke-width="10" opacity="0.4"><animateTransform attributeName="transform" type="translate" values="-2200,0;0,0;-2200,0" dur="30s" repeatCount="indefinite"/></path><path d="M-100,550 Q600,400 1300,570 Q1800,700 2400,530 Q3000,370 4300,650" fill="none" stroke="url(%23hair2)" stroke-width="2" opacity="0.8"><animateTransform attributeName="transform" type="translate" values="0,0;1400,0;0,0" dur="50s" repeatCount="indefinite"/></path></svg>') no-repeat center center;
     background-size: cover;
-    animation: wave-float 40s ease-in-out infinite;
+    animation: hair-flow 60s ease-in-out infinite;
     z-index: -1;
     pointer-events: none;
   }
@@ -127,18 +127,18 @@ All colors MUST be HSL.
   .pulse { @apply animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite]; }
   .bg-hero { background: var(--gradient-hero); }
   
-  @keyframes wave-float {
+  @keyframes hair-flow {
     0%, 100% { 
-      transform: translateY(0) scale(1);
+      transform: translateY(0) scale(1) rotate(0deg);
     }
     25% { 
-      transform: translateY(-15px) scale(1.02);
+      transform: translateY(-8px) scale(1.01) rotate(0.5deg);
     }
     50% { 
-      transform: translateY(10px) scale(0.98);
+      transform: translateY(5px) scale(0.99) rotate(-0.3deg);
     }
     75% { 
-      transform: translateY(-8px) scale(1.01);
+      transform: translateY(-3px) scale(1.005) rotate(0.2deg);
     }
   }
 }
