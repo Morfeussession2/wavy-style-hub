@@ -34,8 +34,8 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete, isLoading }) =>
     );
 
     // Animação das estrelinhas - loop curto pra dar efeito
-    gsap.utils.toArray(sparklesRef.current?.children || []).forEach((star) => {
-      gsap.to(star, {
+    gsap.utils.toArray(sparklesRef.current?.children || []).forEach((star: any) => {
+      gsap.to(star as HTMLElement, {
         opacity: 1,
         scale: 1,
         x: () => (Math.random() - 0.7) * 60,
