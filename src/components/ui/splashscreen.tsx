@@ -17,6 +17,13 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete, isLoading }) =>
 
   // Inicia a animação de entrada da splash (logo + estrelinhas)
   useEffect(() => {
+     const timer1 = setTimeout(() => setAnimationPhase(1), 500);
+        const timer2 = setTimeout(() => setAnimationPhase(2), 1500);
+        const timer3 = setTimeout(() => setAnimationPhase(3), 2500);
+        const timer4 = setTimeout(() => {
+      setIsVisible(false);
+      setTimeout(onComplete, 500);
+    }, 3500);
     tl.current = gsap.timeline();
 
     tl.current.set(containerRef.current, { opacity: 1 });
@@ -79,13 +86,21 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete, isLoading }) =>
       <div className="relative flex flex-col items-center justify-center">
 
         {/* Estrelinhas decorativas */}
-        <div ref={sparklesRef} className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-          <div className="absolute top-10 left-10 text-amber-400 text-xl">✨</div>
-          <div className="absolute top-20 right-16 text-rose-400 text-lg">💫</div>
-          <div className="absolute bottom-20 left-20 text-pink-400 text-xl">⭐</div>
-          <div className="absolute bottom-16 right-12 text-amber-300 text-lg">✨</div>
-          <div className="absolute top-32 left-32 text-rose-300 text-sm">💫</div>
-          <div className="absolute bottom-32 right-32 text-pink-300 text-sm">⭐</div>
+        <div className="absolute inset-0 overflow-hidden">
+            {[...Array(15)].map((_, i) => (
+            <div
+                key={i}
+                className="absolute text-yellow-200 opacity-60 animate-pulse transition-all duration-1000"
+                style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 2}s`,
+                fontSize: `${Math.random() * 8 + 8}px`,
+                }}
+            >
+                ✦
+            </div>
+            ))}
         </div>
 
         {/* Logo */}
@@ -107,3 +122,11 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete, isLoading }) =>
 };
 
 export default SplashScreen;
+function setAnimationPhase(arg0: number): void {
+    throw new Error('Function not implemented.');
+}
+
+function setIsVisible(arg0: boolean) {
+    throw new Error('Function not implemented.');
+}
+
